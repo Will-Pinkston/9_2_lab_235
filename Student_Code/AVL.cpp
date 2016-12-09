@@ -130,6 +130,7 @@ void AVL::rotateRight(Node* a)
 
 void AVL::balanceBack(Node* here, int val)
 {
+    if (here == NULL) return;
     if (here->value == val)
     {
         rebalance(here); return;
