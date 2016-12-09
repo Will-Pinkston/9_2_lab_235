@@ -133,6 +133,8 @@ void AVL::balanceBack(Node* here, int val)
     if (here == NULL) return;
     if (here->value == val)
     {
+        if (here->leftChild != NULL) rebalance(here->leftChild);
+        if (here->rightChild != NULL) rebalance(here->rightChild);
         rebalance(here); return;
     }
     if (val < here->value)
