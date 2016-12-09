@@ -133,9 +133,19 @@ void AVL::balanceBack(Node* here, int val)
     if (here == NULL) return;
     if (here->value == val)
     {
-        if (here->leftChild != NULL) rebalance(here->leftChild);
-        if (here->rightChild != NULL) rebalance(here->rightChild);
-        rebalance(here); return;
+        if (here->leftChild != NULL)
+        {
+            rebalance(here->leftChild);
+            updateHeights(here->leftChild);
+        }
+        if (here->rightChild != NULL)
+        {
+            rebalance(here->rightChild);
+            updateHeights(here->rightChild);
+        }
+        rebalance(here);
+        updateHeights(here);
+        return;
     }
     if (val < here->value)
     {
@@ -147,6 +157,7 @@ void AVL::balanceBack(Node* here, int val)
         balanceBack(here->rightChild, val);
         rebalance(here);
     }
+    updateHeights(here);
 }
 
 int AVL::getTreeHeight(Node* here)
