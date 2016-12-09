@@ -336,7 +336,7 @@ bool AVL::removeHelper(Node* here, int data)
         delete temp;
         temp = NULL;
     }
-    updateHeights(_Roots);
+    updateHeights(_Root);
     balanceBack(_Root, data);
     return true;//------------
 }
