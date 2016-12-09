@@ -337,7 +337,10 @@ bool AVL::removeHelper(Node* here, int data)
         delete temp;
         temp = NULL;
     }
-    balanceBack(_Root, parentNode->value);
+    if (_Root != NULL)
+    {
+        balanceBack(_Root, parentNode->value);
+    }
     return true;//------------
 }
 
