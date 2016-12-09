@@ -282,7 +282,9 @@ bool AVL::removeHelper(Node* here, int data)
                 delete parentNode;
             }
         }
-        balanceBack(_Root, parentNode->value);
+        if (_Root != NULL) {
+            balanceBack(_Root, parentNode->value);
+        }
         return true;//--------
     }
     
