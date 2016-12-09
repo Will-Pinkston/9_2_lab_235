@@ -150,11 +150,13 @@ void AVL::balanceBack(Node* here, int val)
     if (val < here->value)
     {
         balanceBack(here->leftChild, val);
+        updateHeights(_Root);
         rebalance(here);
     }
     else
     {
         balanceBack(here->rightChild, val);
+        updateHeights(_Root);
         rebalance(here);
     }
     updateHeights(here);
