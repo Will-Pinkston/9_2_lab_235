@@ -70,7 +70,7 @@ void AVL::rebalance(Node* here)
         //RR
         rotateLeft(here);
     }
-    
+    updateHeights(here);
     return;
 }
 
