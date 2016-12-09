@@ -128,6 +128,24 @@ void AVL::rotateRight(Node* a)
     }
 }
 
+void AVL::balanceBack(Node* here, int val)
+{
+    if (here->value == val)
+    {
+        rebalance(here); return;
+    }
+    if (val < here->value)
+    {
+        balanceBack(here->leftChild, val);
+        rebalance(here);
+    }
+    else
+    {
+        balanceBack(here->rightChild, val);
+        rebalance(here);
+    }
+}
+
 int AVL::getTreeHeight(Node* here)
 {
     if (here == NULL)
@@ -261,10 +279,8 @@ bool AVL::removeHelper(Node* here, int data)
                 delete parentNode;
             }
         }
-        return true;
-        
-        
-        /////
+        balanceBack(_Root, data);
+        return true;//--------
     }
     
     Node* temp = NULL;
@@ -316,7 +332,8 @@ bool AVL::removeHelper(Node* here, int data)
         delete temp;
         temp = NULL;
     }
-    return true;
+    blanceBack(_Root, data);
+    return true;//------------
 }
 
 AVL::Node* AVL::findVal(Node* find, int data)

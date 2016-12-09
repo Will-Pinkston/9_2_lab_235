@@ -55,6 +55,7 @@ public:
     void rebalance(Node* here);
     void rotateLeft(Node* a);
     void rotateRight(Node* a);
+    void balanceBack(Node* here, int val);
     int getTreeHeight(Node* here);
     void updateHeights(Node* here);
     
