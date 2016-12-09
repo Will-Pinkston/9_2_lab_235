@@ -65,6 +65,8 @@ public:
     Node* findVal(Node* find, int data);
     Node* findValR(Node* find, int data);
     Node* findLeftGreatest(Node* remL_Child);
+    void clear();
+    Node* clearHelper(Node* here);
 };
 
 

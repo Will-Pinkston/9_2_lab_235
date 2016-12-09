@@ -18,7 +18,7 @@ AVL::AVL()
 
 AVL::~AVL()
 {
-    //if we even need it, we can recycle the code from BST::clear() in lab 6
+    clear();
 }
 
 NodeInterface * AVL::getRootNode()
@@ -393,3 +393,28 @@ AVL::Node* AVL::findLeftGreatest(Node* remL_Child)
     }
     else return findLeftGreatest(remL_Child->rightChild);
 }
+
+void AVL::clear()
+{
+    Node* clearCheck = clearHelper(_Root);
+    //    if (clearCheck!= NULL) cout << "error in clearHelper" << endl;
+    _Root = clearCheck;
+}
+
+AVL::Node* AVL::clearHelper(Node* here)
+{
+    
+    if (here == NULL) return NULL;
+    
+    Node* temp = here;
+    Node* left = temp->leftChild;
+    Node* right = temp->rightChild;
+    
+    clearHelper(left);
+    clearHelper(right);
+    
+    delete temp;
+    temp = NULL;
+    return temp;
+}
+
